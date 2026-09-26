@@ -1,37 +1,38 @@
-# AI Study Planner
-
-AI Study Planner is a student productivity application designed to help
-students organize academic tasks, manage study plans, and track progress.
-
-## Project Goal
-
-The goal of this project is to create a simple student-focused productivity
-application using modern development practices and AI-assisted development.
-
-## Technology Stack
-
-- Node.js
-- JavaScript
-- Git
-- GitHub
-
-## Current Status
-
-Project setup phase.
-
-## Planned Features
-
-- Task management
-- Study schedule creation
-- Progress tracking
-- Priority management
-- AI-assisted study suggestions
-
 ## Installation
 
-Clone the repository and install dependencies:
+Make sure Node.js, npm, and Git are installed.
 
-```bash
+Clone the repository:
+
 git clone <repository-url>
+
+Move into the project directory:
+
 cd ai-study-planner
+
+Install the project dependencies:
+
 npm install
+
+Start the application:
+
+npm start
+
+The application should display:
+
+AI Study Planner setup complete.
+
+## Running the Project
+
+npm start
+
+## Development Conventions
+
+- Keep the code simple and readable.
+- Use meaningful variable and function names.
+- Keep functions small and focused.
+- Update documentation when project behavior changes.
+
+## License
+
+This project is licensed under the MIT License.
