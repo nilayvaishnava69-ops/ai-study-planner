@@ -15,7 +15,9 @@ export default function HomePage() {
             Organize your academic tasks, manage your study plan,
             and track your progress from one workspace.
           </p>
-
+         <p className="mt-4 text-sm font-medium text-green-600">
+  Live deployment powered by Vercel
+</p>       
           <div className="mt-8 flex flex-wrap gap-4">
             <a
               href="/ai-planner"
