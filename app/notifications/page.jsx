@@ -1,8 +1,10 @@
+import PageContainer from '../components/PageContainer';
+
 export default function NotificationsPage() {
   return (
-    <main>
-      <h1>Notifications</h1>
-      <p>Manage study reminders and notification preferences.</p>
-    </main>
+    <PageContainer
+      title="Notifications"
+      description="Manage study reminders and notification preferences."
+    />
   );
 }

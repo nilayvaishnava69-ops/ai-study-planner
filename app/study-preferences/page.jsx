@@ -1,8 +1,10 @@
+import PageContainer from '../components/PageContainer';
+
 export default function StudyPreferencesPage() {
   return (
-    <main>
-      <h1>Study Preferences</h1>
-      <p>Configure your preferred study methods and schedule.</p>
-    </main>
+    <PageContainer
+      title="Study Preferences"
+      description="Configure your preferred study methods and schedule."
+    />
   );
 }
