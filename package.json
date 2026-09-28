@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest run",
-    "start": "node src/index.js",
-    "dev": "next dev"
+    "start": "next start",
+    "dev": "next dev",
+    "build": "next build"
   },
   "keywords": [],
   "author": "",
