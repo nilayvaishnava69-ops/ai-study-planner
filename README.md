@@ -36,3 +36,9 @@ npm start
 ## License
 
 This project is licensed under the MIT License.
+
+## Live Demo
+
+The AI Study Planner is deployed on Vercel:
+
+https://ai-study-planner-inky-seven.vercel.app/
