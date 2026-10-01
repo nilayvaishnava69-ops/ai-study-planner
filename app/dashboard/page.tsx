@@ -1,3 +1,7 @@
+'use client';
+
+import { useState } from 'react';
+
 const subjects = [
   { name: 'Data Structures', progress: 72 },
   { name: 'Database Management', progress: 58 },
@@ -5,10 +9,25 @@ const subjects = [
   { name: 'Operating Systems', progress: 64 },
 ];
 
-const tasks = [
-  { title: 'Complete DSA practice', subject: 'Data Structures', time: '10:00 AM' },
-  { title: 'Revise SQL joins', subject: 'Database Management', time: '1:00 PM' },
-  { title: 'Study TCP/IP basics', subject: 'Computer Networks', time: '4:00 PM' },
+const initialTasks = [
+  {
+    id: 1,
+    title: 'Complete DSA practice',
+    subject: 'Data Structures',
+    time: '10:00 AM',
+  },
+  {
+    id: 2,
+    title: 'Revise SQL joins',
+    subject: 'Database Management',
+    time: '1:00 PM',
+  },
+  {
+    id: 3,
+    title: 'Study TCP/IP basics',
+    subject: 'Computer Networks',
+    time: '4:00 PM',
+  },
 ];
 
 const deadlines = [
@@ -18,6 +37,20 @@ const deadlines = [
 ];
 
 export default function DashboardPage() {
+  const [tasks, setTasks] = useState(initialTasks);
+  const [completedTasks, setCompletedTasks] = useState<number[]>([]);
+
+  const toggleTask = (taskId: number) => {
+    setCompletedTasks((current) =>
+      current.includes(taskId)
+        ? current.filter((id) => id !== taskId)
+        : [...current, taskId]
+    );
+  };
+
+  const completedCount = completedTasks.length;
+  const totalTasks = tasks.length;
+
   return (
     <main className="min-h-screen bg-gray-50">
       <section className="mx-auto max-w-6xl px-6 py-12">
@@ -66,26 +99,51 @@ export default function DashboardPage() {
           </section>
 
           <section className="rounded-2xl bg-white p-6 shadow-sm">
-            <h2 className="text-xl font-semibold text-gray-900">
-              Today's Tasks
-            </h2>
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-semibold text-gray-900">
+                Today's Tasks
+              </h2>
+
+              <span className="text-sm font-medium text-gray-500">
+                {completedCount}/{totalTasks} completed
+              </span>
+            </div>
 
             <div className="mt-5 space-y-4">
-              {tasks.map((task) => (
-                <div
-                  key={task.title}
-                  className="rounded-lg border border-gray-200 p-4"
-                >
-                  <p className="font-medium text-gray-900">
-                    {task.title}
-                  </p>
+              {tasks.map((task) => {
+                const isCompleted = completedTasks.includes(task.id);
 
-                  <div className="mt-1 flex justify-between text-sm text-gray-500">
-                    <span>{task.subject}</span>
-                    <span>{task.time}</span>
-                  </div>
-                </div>
-              ))}
+                return (
+                  <label
+                    key={task.id}
+                    className="flex cursor-pointer items-start gap-3 rounded-lg border border-gray-200 p-4 hover:bg-gray-50"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={isCompleted}
+                      onChange={() => toggleTask(task.id)}
+                      className="mt-1 h-4 w-4"
+                    />
+
+                    <div className="flex-1">
+                      <p
+                        className={`font-medium ${
+                          isCompleted
+                            ? 'text-gray-400 line-through'
+                            : 'text-gray-900'
+                        }`}
+                      >
+                        {task.title}
+                      </p>
+
+                      <div className="mt-1 flex justify-between text-sm text-gray-500">
+                        <span>{task.subject}</span>
+                        <span>{task.time}</span>
+                      </div>
+                    </div>
+                  </label>
+                );
+              })}
             </div>
           </section>
 
@@ -122,6 +180,7 @@ export default function DashboardPage() {
                 <p className="font-semibold text-gray-900">
                   9:00 AM – 10:30 AM
                 </p>
+
                 <p className="mt-1 text-gray-600">
                   Data Structures practice
                 </p>
@@ -131,6 +190,7 @@ export default function DashboardPage() {
                 <p className="font-semibold text-gray-900">
                   1:00 PM – 2:00 PM
                 </p>
+
                 <p className="mt-1 text-gray-600">
                   Database Management revision
                 </p>
@@ -140,6 +200,7 @@ export default function DashboardPage() {
                 <p className="font-semibold text-gray-900">
                   4:00 PM – 5:00 PM
                 </p>
+
                 <p className="mt-1 text-gray-600">
                   Computer Networks study
                 </p>
