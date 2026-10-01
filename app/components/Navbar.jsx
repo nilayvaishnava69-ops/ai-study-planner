@@ -12,6 +12,13 @@ export default function Navbar() {
         </Link>
 
         <Link
+  href="/dashboard"
+  className="rounded px-3 py-2 font-semibold hover:bg-gray-100"
+>
+  Dashboard
+</Link>
+
+        <Link
           href="/academic-profile"
           className="rounded px-3 py-2 hover:bg-gray-100"
         >
