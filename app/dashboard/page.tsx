@@ -142,21 +142,38 @@ export default function DashboardPage() {
                     />
 
                     <div className="flex-1">
-                      <p
-                        className={`font-medium ${
-                          isCompleted
-                            ? 'text-gray-400 line-through'
-                            : 'text-gray-900'
-                        }`}
-                      >
-                        {task.title}
-                      </p>
+  <p
+    className={`font-medium ${
+      isCompleted
+        ? 'text-gray-400 line-through'
+        : 'text-gray-900'
+    }`}
+  >
+    {task.title}
+  </p>
 
-                      <div className="mt-1 flex justify-between text-sm text-gray-500">
-                        <span>{task.subject}</span>
-                        <span>{task.time}</span>
-                      </div>
-                    </div>
+  <div className="mt-1 flex justify-between text-sm text-gray-500">
+    <span>{task.subject}</span>
+    <span>{task.time}</span>
+  </div>
+</div>
+
+<button
+  type="button"
+  onClick={() => {
+    setTasks((current) =>
+      current.filter((item) => item.id !== task.id)
+    );
+
+    setCompletedTasks((current) =>
+      current.filter((id) => id !== task.id)
+    );
+  }}
+  aria-label={`Delete ${task.title}`}
+  className="rounded-md px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-500"
+>
+  Delete
+</button>
                   </label>
                 );
               })}
