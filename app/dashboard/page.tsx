@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import TaskForm from './components/TaskForm';
 
 const subjects = [
   { name: 'Data Structures', progress: 72 },
@@ -13,7 +14,7 @@ const initialTasks = [
   {
     id: 1,
     title: 'Complete DSA practice',
-    subject: 'Data Structures',
+    subject: 'Data Structures', 
     time: '10:00 AM',
   },
   {
@@ -38,6 +39,20 @@ const deadlines = [
 
 export default function DashboardPage() {
   const [tasks, setTasks] = useState(initialTasks);
+  const addTask = (task: {
+  title: string;
+  subject: string;
+  time: string;
+}) => {
+  setTasks((current) => [
+    ...current,
+    {
+      id: Date.now(),
+      ...task,
+    },
+  ]);
+};
+
   const [completedTasks, setCompletedTasks] = useState<number[]>([]);
 
   const toggleTask = (taskId: number) => {
@@ -103,6 +118,7 @@ export default function DashboardPage() {
               <h2 className="text-xl font-semibold text-gray-900">
                 Today's Tasks
               </h2>
+              <TaskForm onAddTask={addTask} />
 
               <span className="text-sm font-medium text-gray-500">
                 {completedCount}/{totalTasks} completed
